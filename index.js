@@ -2,7 +2,7 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
 
-const PORT = 8000;
+const { PORT = 8000 } = process.env;
 // app.use('/form', express.static(__dirname + '/index.html'));
 
 // default options
@@ -26,7 +26,7 @@ app.post('/upload', function (req, res) {
 
   if (file.size > 1024 * 1024) {
     // 1 MB
-    res.status(400).send('1MB file is allowed.');
+    return res.status(400).send('1MB file is allowed.');
   }
   const uploadPath = __dirname + '/' + file.name;
 
