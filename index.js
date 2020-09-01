@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
   res.send('ok');
 });
 
-app.use('/view', express.static(path.join(__dirname,images)));
+app.use('/view', express.static(path.join(__dirname,'images')));
 
 app.post('/upload', function (req, res) {
   if (!req.files || Object.keys(req.files).length === 0) {
@@ -29,7 +29,7 @@ app.post('/upload', function (req, res) {
     // 1 MB
     return res.status(400).send('1MB file is allowed.');
   }
-  const uploadPath = path.join(__dirname + 'images') + '/' + file.name;
+  const uploadPath = path.join(__dirname + '/images') + '/' + file.name;
 
   file.mv(uploadPath, function (err) {
     if (err) {
